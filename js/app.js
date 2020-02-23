@@ -28,17 +28,23 @@ new Vue({
 
 		},
 		heal: function() {
-			this.playerHealth += 10;
+
+			if (this.playerHealth < 90) {
+				this.playerHealth += 10;
+			} else {
+				this.playerHealth = 100;
+			}
 
 			this.turns.unshift({
-				isPlaying: true,
-				text: "You Heal for 10" 
-			});
+					isPlaying: true,
+					text: "You Heal for 10" 
+				});
 
 			this.monsterAttack();
 
 		},
 		giveUp: function() {
+			
 			this.newGame();
 
 		},
