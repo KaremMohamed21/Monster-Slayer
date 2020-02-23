@@ -19,12 +19,22 @@ new Vue({
 
 			this.damageAttack(10, 3);
 
+			if (this.monsterHealth <= 0) {
+				alert('You Won!');
+				return this.newGame();
+			}
+
 			this.monsterAttack();
 
 		},
 		specialAttack: function() {
 
 			this.damageAttack(20, 10);
+
+			if (this.monsterHealth <= 0) {
+				alert('You Won!');
+				return this.newGame();
+			}
 
 			this.monsterAttack();
 
@@ -59,11 +69,6 @@ new Vue({
 				text: this.playerName + " Hits " + this.monsterName + " for " + damage
 			});
 
-			if (this.monsterHealth <= 0) {
-				alert('You Won!');
-				this.newGame();
-				return;
-			}
 
 		},
 		monsterAttack: function() {
