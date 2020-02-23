@@ -1,6 +1,8 @@
 new Vue({
 	el:'#app',
 	data: {
+		playerName: 'You',
+		monsterName: 'Monster',
 		playerHealth: 100,
 		monsterHealth: 100,
 		gameIsRunning: false,
@@ -22,7 +24,7 @@ new Vue({
 		},
 		specialAttack: function() {
 
-			this.damageAttack(10, 3);
+			this.damageAttack(20, 10);
 
 			this.monsterAttack();
 
@@ -37,14 +39,14 @@ new Vue({
 
 			this.turns.unshift({
 					isPlaying: true,
-					text: "You Heal for 10" 
+					text: this.playerName + " Heals for 10" 
 				});
 
 			this.monsterAttack();
 
 		},
 		giveUp: function() {
-			
+
 			this.newGame();
 
 		},
@@ -54,7 +56,7 @@ new Vue({
 
 			this.turns.unshift({
 				isPlaying: true,
-				text: "You Hits Monster for " + damage
+				text: this.playerName + " Hits " + this.monsterName + " for " + damage
 			});
 
 			if (this.monsterHealth <= 0) {
@@ -70,7 +72,7 @@ new Vue({
 
 			this.turns.unshift({
 				isPlaying: false,
-				text: "Monster Hits You for " + damage
+				text: this.monsterName + " Hits " + this.playerName + " for " + damage
 			});
 
 			if (this.playerHealth <= 0) {
